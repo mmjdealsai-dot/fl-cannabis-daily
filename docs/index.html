@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Florida Medical Cannabis Daily</title>
+<meta name="description" content="Daily Florida medical marijuana dispensary deals, cannabis events and news.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --paper: #EEF3F1; --surface: #FFFFFF; --ink: #122A2E; --muted: #536A6C;
+  --gulf: #0F5A63; --tag: #F4B942; --tag-ink: #2A2105; --new: #C8452F; --line: #D3DEDA;
+  --display: "Bricolage Grotesque", "Arial Narrow", Arial, sans-serif;
+  --body: "Atkinson Hyperlegible", Verdana, Arial, sans-serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root { --paper: #0E1D20; --surface: #152A2E; --ink: #E6EFED; --muted: #9DB3B2;
+          --gulf: #7CC3C8; --line: #28413F; --new: #F07E68; }
+}
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body { margin: 0; background: var(--paper); color: var(--ink); font: 17px/1.55 var(--body); }
+a { color: var(--gulf); text-underline-offset: 3px; }
+a:hover { text-decoration-thickness: 2px; }
+:focus-visible { outline: 3px solid var(--tag); outline-offset: 2px; border-radius: 3px; }
+.wrap { max-width: 980px; margin: 0 auto; padding: 0 20px; }
+
+header.wrap { padding-top: 48px; padding-bottom: 34px; }
+h1 { font: 800 clamp(34px, 6vw, 58px)/1.02 var(--display); letter-spacing: -0.02em; margin: 0; max-width: 14ch; }
+.tagline { color: var(--muted); margin: 12px 0 0; max-width: 60ch; }
+.stamp { display: flex; flex-wrap: wrap; gap: 8px 32px; margin-top: 26px; }
+.stamp div { font-size: 15px; color: var(--muted); }
+.stamp strong { display: block; font: 800 26px/1.1 var(--display); color: var(--ink); }
+
+nav.tabs { display: flex; gap: 4px; border-bottom: 2px solid var(--line); }
+nav.tabs button { font: 600 18px var(--display); background: none; border: 0; color: var(--muted);
+  padding: 10px 16px 12px; margin-bottom: -2px; border-bottom: 3px solid transparent; cursor: pointer; }
+nav.tabs button[aria-selected="true"] { color: var(--ink); border-bottom-color: var(--gulf); }
+nav.tabs .n { font-family: var(--body); font-weight: 400; font-size: 14px; color: var(--muted); margin-left: 4px; }
+
+.filters { display: flex; flex-wrap: wrap; gap: 10px 14px; align-items: center; padding: 18px 0 6px; }
+.filters input[type=search], .filters select { font: 16px var(--body); color: var(--ink); background: var(--surface);
+  border: 1px solid var(--line); border-radius: 6px; padding: 9px 12px; min-height: 44px; }
+.filters input[type=search] { flex: 1 1 220px; }
+.filters label.check { display: inline-flex; gap: 8px; align-items: center; font-size: 16px; cursor: pointer; }
+.filters input[type=checkbox] { width: 20px; height: 20px; accent-color: var(--gulf); }
+
+main.wrap { padding-bottom: 48px; }
+.group { margin-top: 30px; }
+.group h2 { font: 800 24px/1.2 var(--display); margin: 0 0 4px; display: flex; gap: 10px; align-items: baseline; }
+.group h2 small { font: 400 15px var(--body); color: var(--muted); }
+
+/* The shelf tag: the one bold element on the page */
+.deal { display: grid; grid-template-columns: 250px 1fr; gap: 18px; padding: 16px 0; border-bottom: 1px solid var(--line); }
+.tag { position: relative; align-self: start; background: var(--tag); color: var(--tag-ink);
+  font: 800 18px/1.2 var(--display); padding: 12px 14px 12px 34px;
+  clip-path: polygon(14px 0, 100% 0, 100% 100%, 14px 100%, 0 50%); }
+.tag::before { content: ""; position: absolute; left: 14px; top: 50%; width: 9px; height: 9px; margin-top: -4.5px;
+  border-radius: 50%; background: var(--paper); }
+.deal p { margin: 0; }
+.meta { color: var(--muted); font-size: 15px; margin-top: 6px !important; }
+.new { display: inline-block; background: var(--new); color: #fff; font: 700 13px/1 var(--body);
+  padding: 4px 7px; border-radius: 3px; margin-right: 8px; vertical-align: 2px; }
+
+.event { display: grid; grid-template-columns: 76px 1fr; gap: 18px; padding: 16px 0; border-bottom: 1px solid var(--line); }
+.cal { text-align: center; border: 2px solid var(--gulf); border-radius: 6px; padding: 6px 0 8px; align-self: start; }
+.cal .m { font: 600 14px var(--display); color: var(--gulf); }
+.cal .d { font: 800 30px/1 var(--display); }
+.event h3, .story h3 { font: 700 19px/1.3 var(--body); margin: 0 0 4px; }
+.event p, .story p { margin: 0; }
+
+.story { padding: 16px 0; border-bottom: 1px solid var(--line); }
+.story h3 a { color: var(--ink); }
+.pill { font-size: 14px; color: var(--gulf); font-weight: 700; }
+
+.empty { padding: 34px 0; color: var(--muted); max-width: 55ch; }
+footer.wrap { border-top: 2px solid var(--line); padding-top: 22px; padding-bottom: 50px; color: var(--muted); font-size: 15px; }
+footer p { max-width: 70ch; margin: 0 0 8px; }
+
+@media (max-width: 640px) {
+  body { font-size: 16px; }
+  .deal { grid-template-columns: 1fr; gap: 10px; }
+  .tag { justify-self: start; }
+  nav.tabs button { padding: 10px 10px 12px; font-size: 17px; }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .tag.is-new { animation: settle .5s ease-out both; }
+  @keyframes settle { from { transform: rotate(-4deg); transform-origin: 0 50%; } to { transform: none; } }
+}
+</style>
+</head>
+<body>
+<header class="wrap">
+  <h1 id="title"></h1>
+  <p class="tagline" id="tagline"></p>
+  <div class="stamp" id="stamp"></div>
+</header>
+
+<div class="wrap">
+  <nav class="tabs" role="tablist" aria-label="Sections">
+    <button role="tab" data-tab="deals" aria-selected="true">Deals<span class="n" id="n-deals"></span></button>
+    <button role="tab" data-tab="events" aria-selected="false">Events<span class="n" id="n-events"></span></button>
+    <button role="tab" data-tab="news" aria-selected="false">News<span class="n" id="n-news"></span></button>
+  </nav>
+  <div class="filters">
+    <input type="search" id="q" placeholder="Search" aria-label="Search">
+    <select id="f-disp" aria-label="Dispensary"></select>
+    <select id="f-cat" aria-label="Category"></select>
+    <label class="check"><input type="checkbox" id="f-new"> New today only</label>
+  </div>
+</div>
+
+<main class="wrap" id="list" aria-live="polite"></main>
+
+<footer class="wrap">
+  <p id="disclaimer"></p>
+  <p id="updated"></p>
+</footer>
+
+<script>
+const DATA = {"deals": [], "events": [], "news": [], "errors": [], "site": {"title": "Florida Medical Cannabis Daily", "tagline": "Patient discounts, events and news from across Florida, updated every morning.", "url": "", "disclaimer": "This page is gathered automatically each morning from public sources and may be incomplete or out of date. Always confirm a deal with the dispensary before you go. This site is not affiliated with, sponsored by, or paid by any dispensary, and nothing here is medical advice.\n"}};
+const $ = s => document.querySelector(s);
+const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const cap = s => s ? s.charAt(0).toUpperCase() + s.slice(1) : "";
+const fmtDate = (iso, opts) => { if (!iso) return ""; const d = new Date(iso.slice(0,10) + "T12:00:00");
+  return isNaN(d) ? iso : d.toLocaleDateString("en-US", opts || {month: "short", day: "numeric"}); };
+const link = (url, label) => url ? `<a href="${esc(url)}" target="_blank" rel="noopener">${esc(label)}</a>` : "";
+const NEW = '<span class="new">New today</span>';
+
+const site = DATA.site || {};
+const deals = DATA.deals || [], events = DATA.events || [], news = DATA.news || [];
+let tab = (location.hash || "#deals").slice(1);
+if (!["deals","events","news"].includes(tab)) tab = "deals";
+
+$("#title").textContent = site.title || document.title;
+$("#tagline").textContent = site.tagline || "";
+$("#disclaimer").textContent = site.disclaimer || "";
+if (DATA.generated_at) {
+  const g = new Date(DATA.generated_at);
+  $("#updated").textContent = "Last updated " + g.toLocaleString("en-US",
+    {weekday: "long", month: "long", day: "numeric", hour: "numeric", minute: "2-digit", timeZone: "America/New_York"}) + " Eastern.";
+}
+const newCount = a => a.filter(x => x.is_new).length;
+$("#stamp").innerHTML = DATA.generated_at ? [
+  [deals.length, "active deals"], [newCount(deals), "new today"], [events.length, "upcoming events"], [news.length, "news stories"]
+].map(([n, l]) => `<div><strong>${n}</strong>${l}</div>`).join("") : "";
+$("#n-deals").textContent = deals.length; $("#n-events").textContent = events.length; $("#n-news").textContent = news.length;
+
+function fillSelect(el, label, values) {
+  el.innerHTML = `<option value="">${label}</option>` +
+    [...new Set(values.filter(Boolean))].sort().map(v => `<option value="${esc(v)}">${esc(cap(v))}</option>`).join("");
+}
+
+function setupFilters() {
+  const disp = $("#f-disp"), cat = $("#f-cat");
+  disp.value = ""; cat.value = "";
+  if (tab === "deals") {
+    fillSelect(disp, "All dispensaries", deals.map(d => d.dispensary));
+    fillSelect(cat, "All categories", deals.map(d => d.category));
+    disp.hidden = false;
+  } else if (tab === "events") {
+    fillSelect(cat, "All event types", events.map(e => e.type)); disp.hidden = true;
+  } else {
+    fillSelect(cat, "All topics", news.map(n => n.category)); disp.hidden = true;
+  }
+}
+
+function matches(item, fields) {
+  const q = $("#q").value.trim().toLowerCase();
+  if ($("#f-new").checked && !item.is_new) return false;
+  if ($("#f-cat").value && (item[fields.cat] || "") !== $("#f-cat").value) return false;
+  if (tab === "deals" && $("#f-disp").value && item.dispensary !== $("#f-disp").value) return false;
+  if (q && !fields.text.map(f => item[f] || "").join(" ").toLowerCase().includes(q)) return false;
+  return true;
+}
+
+function emptyMsg() {
+  if (!DATA.generated_at) return "The first update arrives tomorrow morning. Check back after 7 AM Eastern.";
+  return "Nothing matches these filters. Clear the search or choose a different dispensary or category.";
+}
+
+function renderDeals() {
+  const list = deals.filter(d => matches(d, {cat: "category", text: ["dispensary","title","details","locations","category"]}));
+  if (!list.length) return `<p class="empty">${emptyMsg()}</p>`;
+  const groups = {};
+  list.forEach(d => (groups[d.dispensary || "Other"] ||= []).push(d));
+  return Object.keys(groups).sort().map(name => `
+    <section class="group"><h2>${esc(name)} <small>${groups[name].length} ${groups[name].length === 1 ? "deal" : "deals"}</small></h2>
+    ${groups[name].map(d => {
+      const meta = [d.schedule, d.locations, d.valid_until ? "Through " + fmtDate(d.valid_until) : "",
+                    d.category ? cap(d.category) : ""].filter(Boolean).map(esc).join(" / ");
+      return `<article class="deal">
+        <div class="tag${d.is_new ? " is-new" : ""}">${esc(d.title)}</div>
+        <div><p>${d.is_new ? NEW : ""}${esc(d.details)}</p>
+        <p class="meta">${meta}${meta && d.source_url ? " / " : ""}${link(d.source_url, "Check the source")}</p></div>
+      </article>`; }).join("")}
+    </section>`).join("");
+}
+
+function renderEvents() {
+  const list = events.filter(e => matches(e, {cat: "type", text: ["name","city","venue","description","type"]}));
+  if (!list.length) return `<p class="empty">${emptyMsg()}</p>`;
+  return list.map(e => {
+    const d = e.date ? new Date(e.date.slice(0,10) + "T12:00:00") : null;
+    const range = e.end_date && e.end_date !== e.date ? " to " + fmtDate(e.end_date) : "";
+    const meta = [fmtDate(e.date, {weekday: "long", month: "long", day: "numeric"}) + range, e.time,
+                  [e.venue, e.city].filter(Boolean).join(", "), e.cost].filter(Boolean).map(esc).join(" / ");
+    return `<article class="event">
+      <div class="cal" aria-hidden="true"><div class="m">${d ? d.toLocaleDateString("en-US",{month:"short"}) : ""}</div><div class="d">${d ? d.getDate() : "?"}</div></div>
+      <div><h3>${e.is_new ? NEW : ""}${esc(e.name)}</h3><p class="meta">${meta}</p>
+      <p>${esc(e.description)} ${link(e.source_url, "Event details")}</p></div>
+    </article>`; }).join("");
+}
+
+function renderNews() {
+  const list = news.filter(n => matches(n, {cat: "category", text: ["headline","summary","source","category"]}));
+  if (!list.length) return `<p class="empty">${emptyMsg()}</p>`;
+  return list.map(n => `<article class="story">
+    <h3>${n.is_new ? NEW : ""}${n.url ? link(n.url, n.headline) : esc(n.headline)}</h3>
+    <p class="meta"><span class="pill">${esc(cap(n.category))}</span> / ${esc(n.source)} / ${esc(fmtDate(n.published, {month:"long", day:"numeric"}))}</p>
+    <p>${esc(n.summary)}</p></article>`).join("");
+}
+
+function render() {
+  document.querySelectorAll("nav.tabs button").forEach(b => b.setAttribute("aria-selected", b.dataset.tab === tab));
+  $("#list").innerHTML = tab === "deals" ? renderDeals() : tab === "events" ? renderEvents() : renderNews();
+}
+
+document.querySelectorAll("nav.tabs button").forEach(b => b.addEventListener("click", () => {
+  tab = b.dataset.tab; history.replaceState(null, "", "#" + tab); $("#q").value = ""; setupFilters(); render();
+}));
+["#q", "#f-disp", "#f-cat", "#f-new"].forEach(s => $(s).addEventListener("input", render));
+setupFilters(); render();
+</script>
+</body>
+</html>

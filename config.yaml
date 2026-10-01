@@ -1,0 +1,70 @@
+# =====================================================================
+#  SETTINGS  —  this is the only file you normally need to edit.
+#  Lines starting with # are notes and are ignored.
+#  Keep the indentation (spaces) exactly as you see it.
+# =====================================================================
+
+site:
+  title: "Florida Medical Cannabis Daily"
+  tagline: "Patient discounts, events and news from across Florida, updated every morning."
+  # After you turn on GitHub Pages, paste your site's address here so the
+  # daily email can link to it, e.g. "https://yourname.github.io/fl-cannabis-daily/"
+  url: ""
+  disclaimer: >
+    This page is gathered automatically each morning from public sources and may be
+    incomplete or out of date. Always confirm a deal with the dispensary before you go.
+    This site is not affiliated with, sponsored by, or paid by any dispensary, and
+    nothing here is medical advice.
+
+email:
+  subject_prefix: "FL Cannabis Daily"
+
+claude:
+  # Which Claude model does the research. To lower cost, you can switch to
+  # "claude-haiku-4-5-20251001" (cheaper, a little less thorough).
+  model: "claude-sonnet-5-5"
+  # If the run log ever says the web search tool type is invalid,
+  # change this to "web_search_20250305".
+  web_search_tool: "web_search_20260209"
+  max_tokens: 8000
+  # How many web searches Claude may run for each job (more = thorough but pricier).
+  searches_per_dispensary: 4
+  searches_for_events: 8
+  searches_for_news: 10
+  # How many dispensaries to research at the same time.
+  parallel_jobs: 3
+
+# Optional: read dispensary promo emails from the bot's Gmail inbox.
+# Subscribe the bot Gmail to each dispensary's email list first, then set enabled: true
+inbox:
+  enabled: false
+  folder: "INBOX"
+  hours_back: 30
+
+# Florida MMTC brands to check every morning (from the state OMMU weekly updates).
+# Add or remove a line any time — just keep the "  - " at the start.
+dispensaries:
+  - Trulieve
+  - MÜV
+  - Curaleaf
+  - Ayr Cannabis Dispensary
+  - Surterra Wellness
+  - Green Dragon
+  - Planet 13
+  - FLUENT
+  - Sunnyside
+  - RISE
+  - Cookies Florida
+  - GrowHealthy
+  - Sanctuary Cannabis
+  - Mint Cannabis
+  - The Flowery
+  - Goldflower Cannabis
+  - Wildflower
+  - Jungle Boys
+  - Insa
+  - Cannabist
+  - Sunburn Cannabis
+  - VidaCann
+  - Eden
+  - One Plant

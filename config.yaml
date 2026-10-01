@@ -9,7 +9,7 @@ site:
   tagline: "Patient discounts, events and news from across Florida, updated every morning."
   # After you turn on GitHub Pages, paste your site's address here so the
   # daily email can link to it, e.g. "https://yourname.github.io/fl-cannabis-daily/"
-  url: ""
+  url: "https://mmjdealsai-dot.github.io/fl-cannabis-daily/"
   disclaimer: >
     This page is gathered automatically each morning from public sources and may be
     incomplete or out of date. Always confirm a deal with the dispensary before you go.
